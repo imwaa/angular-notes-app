@@ -4,18 +4,21 @@
 <ng-template #showUserMenu>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">Notes App</a>
+      <a class="navbar-brand">Notes App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><i class="far fa-sticky-note"></i> Mes Notes</a>
+          <li class="nav-item" routerLink="/notes">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/notes']"
+              routerLinkActive="router-link-active"><i class="far fa-sticky-note"></i> Mes Notes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#"><i class="far fa-plus-square"></i> Ajouter une note</a>
+            <a class="nav-link active" routerLink="/notes/create-note"><i class="far fa-plus-square" routerlin></i>
+              Ajouter
+              une note</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
