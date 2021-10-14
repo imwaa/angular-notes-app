@@ -15,6 +15,9 @@ import { CoreModule } from './core/core.module';
 import { NotesModule } from './notes/notes.module';
 import { environment } from 'src/environments/environment';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +32,8 @@ import { SharedModule } from './shared/shared.module';
     AngularFireAuthModule,
     NotesModule,
     SharedModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

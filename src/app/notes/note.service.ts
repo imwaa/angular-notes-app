@@ -33,4 +33,27 @@ export class NoteService {
       })
     );
   }
+
+  getNoteData(id: string) {
+    this.notesDocument = this.afs.doc<Note>(`notes/${id}`);
+    return this.notesDocument.valueChanges();
+  }
+
+  /* C R U D - OPERATIONS */
+
+  createNote(data: Note) {
+    this.notesCollection.add(data);
+  }
+
+  getNote(id: string) {
+    return this.afs.doc<Note>(`notes/${id}`);
+  }
+
+  updateNote(id: string, formData) {
+    this.getNote(id).update(formData);
+  }
+
+  deleteNote(id: string) {
+    this.getNote(id).delete();
+  }
 }

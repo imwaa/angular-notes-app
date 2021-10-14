@@ -10,11 +10,33 @@ import { NoteService } from '../note.service';
 })
 export class AllNotesComponent implements OnInit {
   notes: Observable<Note[]>;
+  GotNoteForUpdate: Note = {} as Note;
+  IdOfNoteToBeUpdated: string;
 
   constructor(private notesService: NoteService) {}
 
   ngOnInit(): void {
     this.notes = this.notesService.getAllNotes();
-    console.log(this.notes);
+  }
+
+  noteDeleting(id: string) {
+    this.notesService.deleteNote(id);
+  }
+
+  getNoteToBeEdited(id: string) {
+    this.notesService
+      .getNoteData(id)
+      .subscribe((data) => (this.GotNoteForUpdate = data));
+    this.IdOfNoteToBeUpdated = id;
+  }
+
+  noteUpdating() {
+    const formData = {
+      title: this.GotNoteForUpdate.title,
+      description: this.GotNoteForUpdate.description,
+    };
+    this.notesService.updateNote(this.IdOfNoteToBeUpdated, formData);
+    this.IdOfNoteToBeUpdated = '';
+    console.log('note edited');
   }
 }

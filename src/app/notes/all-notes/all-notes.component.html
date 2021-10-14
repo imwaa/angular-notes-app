@@ -1,6 +1,7 @@
-<div class="container mt-5">
-  <div class=" d-flex justify-content-start">
-    <div class="card mx-3" style="width: 18rem;" *ngFor="let note of notes | async">
+<div class="container-lg mt-5">
+
+  <div class=" d-flex justify-content-center flex-wrap">
+    <div class="card mx-3 my-3" style="width: 18rem;" *ngFor="let note of notes | async">
       <div class="card-body">
         <h5 class="card-title">{{note.title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{note.date.toDate() | date:"fullDate"}}</h6>
@@ -8,8 +9,38 @@
       </div>
       <div class="card-footer ">
         <div class="float-end">
-          <button class="btn btn-primary mx-2"><i class="fas fa-edit"></i></button>
-          <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+          <button class="btn btn-primary mx-2" (click)="getNoteToBeEdited(note.id)" data-bs-toggle="modal"
+            data-bs-target="#editNoteModal"><i class="fas fa-edit"></i></button>
+          <button class="btn btn-danger" (click)="noteDeleting(note.id)"><i class="fas fa-trash"></i></button>
+          <!-- Edit Note Modal -->
+          <div class="modal fade " id="editNoteModal" tabindex="-1" aria-labelledby="editNoteModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Changer une note</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Titre de la note</label>
+                    <input type="text" class="form-control" id="inputTitleUpdate" name="inputTitleUpdate"
+                      [(ngModel)]="GotNoteForUpdate.title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <textarea class="form-control" id="inputDescriptionUpdate" name="inputDescriptionUpdate" rows="3"
+                      [(ngModel)]="GotNoteForUpdate.description"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="noteUpdating()">Mettre
+                    à jour</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Modal  -->
         </div>
       </div>
     </div>
