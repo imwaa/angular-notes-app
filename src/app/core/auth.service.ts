@@ -39,8 +39,14 @@ export class AuthService {
     return this.authState !== null;
   }
 
+  getUserId() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.uid;
+  }
+
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
+    alert(user);
     return user !== null ? true : false;
   }
 
@@ -52,9 +58,7 @@ export class AuthService {
     this.afAuth
       .signInWithPopup(new firebaseAuth.GoogleAuthProvider())
       .then((success) => {
-        this.ngZone.run(() => {
-          this.route.navigate(['/notes']);
-        });
+        this.route.navigate(['/notes']);
       });
   }
 

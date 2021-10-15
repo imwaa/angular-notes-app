@@ -22,6 +22,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
+  exports: [AllNotesComponent, CreateNoteComponent, SignInComponent],
   providers: [NoteService],
 })
 export class NotesModule {}

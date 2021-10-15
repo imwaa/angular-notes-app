@@ -1,0 +1,36 @@
+h1 {
+  margin: 1em auto;
+  width: fit-content;
+  font-size: 50px;
+}
+
+.body container-login-card {
+  border-style: solid;
+  border-color: black;
+}
+.illustration {
+  margin: 2em auto;
+  width: 700px;
+  height: auto;
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.log-in {
+  margin: 1em auto;
+  width: 500px;
+  height: 100px;
+}
+
+@media only screen and (max-width: 767px) {
+  .illustration {
+    width: 400px;
+  }
+  h1 {
+    font-size: 30px;
+    margin: 3em auto;
+  }
+}

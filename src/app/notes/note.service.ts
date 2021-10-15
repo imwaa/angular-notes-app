@@ -7,6 +7,7 @@ import {
 
 import { Note } from './note';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../core/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,13 @@ export class NoteService {
   notesCollection: AngularFirestoreCollection<Note>;
   notesDocument: AngularFirestoreDocument<Note>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private auth: AuthService) {
     // we store the name of the collection that we want to work with//
+    console.log(this.auth.getUserId());
     this.notesCollection = this.afs.collection('notes', (ref) =>
-      ref.orderBy('date', 'desc')
+      ref
+        .where('authorId', '==', this.auth.getUserId() || null)
+        .orderBy('date', 'desc')
     );
   }
 
