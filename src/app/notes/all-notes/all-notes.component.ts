@@ -16,7 +16,7 @@ export class AllNotesComponent implements OnInit {
   constructor(private notesService: NoteService) {}
 
   ngOnInit(): void {
-    this.notes = this.notesService.getAllNotes();
+    this.notes = this.notesService.getAllNotes() || null;
   }
 
   noteDeleting(id: string) {

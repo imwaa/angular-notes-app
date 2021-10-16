@@ -8,6 +8,7 @@ import {
 import { Note } from './note';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../core/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -15,15 +16,31 @@ import { AuthService } from '../core/auth.service';
 export class NoteService {
   notesCollection: AngularFirestoreCollection<Note>;
   notesDocument: AngularFirestoreDocument<Note>;
+  userData = ''; // Save logged in user data
+  hello = 'VuS3y3c8sLT6osE3sQBBwaYVAVq1';
 
-  constructor(private afs: AngularFirestore, private auth: AuthService) {
-    // we store the name of the collection that we want to work with//
-    console.log(this.auth.getUserId());
-    this.notesCollection = this.afs.collection('notes', (ref) =>
-      ref
-        .where('authorId', '==', this.auth.getUserId() || null)
-        .orderBy('date', 'desc')
-    );
+  constructor(
+    private afs: AngularFirestore,
+    private auth: AuthService,
+    private afAuth: AngularFireAuth
+  ) {
+    // this.afAuth.authState.subscribe((user) => {
+    //   if (user) {
+    //     this.userData = user.uid;
+    //     // we store the name of the collection that we want to work with//
+    //   } else {
+    //     alert('no data for user');
+    //   }
+    // });
+
+    this.afAuth.onAuthStateChanged((user) => {
+      if (user) {
+        this.userData = user.uid;
+        this.notesCollection = this.afs.collection('notes', (ref) =>
+          ref.where('authorId', '==', this.userData).orderBy('date', 'desc')
+        );
+      }
+    });
   }
 
   getAllNotes() {

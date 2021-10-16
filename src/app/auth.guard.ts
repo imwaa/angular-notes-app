@@ -9,23 +9,35 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from './core/auth.service';
 import { Subscription } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   public isUserAuth: Subscription;
-  constructor(private auth: AuthService, private route: Router) {}
+  constructor(
+    private auth: AuthService,
+    private route: Router,
+    private afAuth: AngularFireAuth
+  ) {}
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.auth.isLoggedIn !== true) {
-      this.route.navigate(['/notes']);
-      return false;
-    } else {
-      return true;
+  ): Promise<boolean | UrlTree> {
+    const user = await this.afAuth.currentUser;
+    const isAuth = user ? true : false;
+    if (!isAuth) {
+      this.route.navigate(['/sign-in']);
     }
+    return isAuth;
+
+    // if (this.auth.isLoggedIn !== true) {
+    //   this.route.navigate(['/notes']);
+    //   return false;
+    // } else {
+    //   return true;
+    // }
   }
 }
