@@ -2,5 +2,33 @@
   font-size: 25px;
 }
 .nav-link {
-  font-size: 18px;
+  font-size: 19px;
+}
+
+@media only screen and (max-width: 767px) {
+  .cou {
+    padding-top: 50px;
+  }
+  .nav-item {
+    margin: 10px;
+  }
+  .nav-link {
+    font-size: 25px;
+    padding-left: 20px;
+  }
+  .user-down {
+    background-color: black;
+    border-radius: 2rem;
+  }
+  .dropdown-toggle {
+    width: fit-content;
+    padding-right: 20px;
+  }
+
+  .nav-link:hover {
+  }
+
+  .dropdown-item {
+    font-size: 18px;
+  }
 }

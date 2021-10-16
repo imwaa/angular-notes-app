@@ -1,15 +1,27 @@
 <div>
-  <div class="container mt-5">
-    <h1>Welcome to the Notes App</h1>
-    <div class="container-login-card">
-      <div class="illustration ">
-        <img class="img-responsive" src="../../../assets/log-img.png" alt="">
+  <div class="d-flex justify-content-center">
+    <div class="card ">
+      <div class="card-header text-white bg-primary">
+        Connectez-vous avec l'un de ces comptes
       </div>
-      <div class="d-flex justify-content-center">
-        <a class="btn btn-outline-dark float-end" (click)="auth.login()" role=" button" style="text-transform:none">
+      <div class="card-body">
+
+        <a class="login-btn btn btn-outline-dark float-end" (click)="auth.loginGoogle()" role=" button"
+          style="text-transform:none">
           <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-          Login with Google </a>
+          Se connecter avec Google </a>
+        <a class="login-btn btn btn-outline-dark float-end" (click)="auth.loginFacebook()" role=" button"
+          style="text-transform:none">
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" />
+          Se connecterFacebook </a>
+        <a class="login-btn btn btn-outline-dark float-end" (click)="auth.loginGithub()" role=" button"
+          style="text-transform:none">
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" />
+          Se connecter Github </a>
+
       </div>
     </div>
   </div>

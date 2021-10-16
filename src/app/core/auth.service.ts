@@ -48,9 +48,25 @@ export class AuthService {
     return this.authenticated ? this.authState.uid : null;
   }
 
-  login() {
+  loginGoogle() {
     this.afAuth
       .signInWithPopup(new firebaseAuth.GoogleAuthProvider())
+      .then((success) => {
+        this.route.navigate(['/notes']);
+      });
+  }
+
+  loginFacebook() {
+    this.afAuth
+      .signInWithPopup(new firebaseAuth.FacebookAuthProvider())
+      .then((success) => {
+        this.route.navigate(['/notes']);
+      });
+  }
+
+  loginGithub() {
+    this.afAuth
+      .signInWithPopup(new firebaseAuth.GithubAuthProvider())
       .then((success) => {
         this.route.navigate(['/notes']);
       });

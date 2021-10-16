@@ -28,6 +28,9 @@ export class SignInGuardGuard implements CanActivate {
     const isAuth = user ? true : false;
     if (isAuth) {
       this.route.navigate(['/notes']);
+    } else {
+      this.route.navigate(['/sing-in']);
+      return false;
     }
     return isAuth;
   }

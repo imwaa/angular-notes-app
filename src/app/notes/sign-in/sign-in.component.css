@@ -1,36 +1,33 @@
 h1 {
   margin: 1em auto;
   width: fit-content;
-  font-size: 50px;
+  font-size: 40px;
 }
 
-.body container-login-card {
-  border-style: solid;
-  border-color: black;
-}
-.illustration {
-  margin: 2em auto;
-  width: 700px;
-  height: auto;
+.login-btn {
+  margin: 15px auto;
+  width: 300px;
 }
 
-.img-responsive {
-  width: 100%;
-  height: auto;
+.card {
+  margin: 100px 0;
+  width: 450px;
 }
 
-.log-in {
-  margin: 1em auto;
-  width: 500px;
-  height: 100px;
+.card-body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 767px) {
-  .illustration {
-    width: 400px;
+  .login-btn {
+    margin: 15px auto;
+    width: 300px;
   }
-  h1 {
-    font-size: 30px;
-    margin: 3em auto;
+
+  .card {
+    margin: 100px 0;
+    width: 320px;
   }
 }

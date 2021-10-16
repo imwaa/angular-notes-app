@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/notes-app",
+            "outputPath": "dist/angular-notes-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -40,13 +40,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "22mb",
+                  "maximumError": "25mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "22mb",
+                  "maximumError": "25mb"
                 }
               ],
               "fileReplacements": [
@@ -106,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "notes-app"
+  "defaultProject": "angular-notes-app"
 }

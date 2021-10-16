@@ -8,14 +8,22 @@ import { AuthService } from '../../core/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  userAvatar = '';
+  userAvatar: string;
+  userName: string;
   constructor(public auth: AuthService, private afAuth: AngularFireAuth) {
     this.afAuth.onAuthStateChanged((user) => {
       if (user) {
         this.userAvatar = user.photoURL;
+        this.userName = user.displayName;
       }
     });
   }
 
   ngOnInit(): void {}
+
+  errorHandler(event) {
+    console.debug(event);
+    event.target.src =
+      'https://grandimageinc.com/wp-content/uploads/2015/09/icon-user-default.png';
+  }
 }
