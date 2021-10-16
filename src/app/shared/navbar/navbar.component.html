@@ -1,4 +1,4 @@
-<div *ngIf="auth.afAuth.authState | async as user; then showUserMenu else showLogin"></div>
+<div *ngIf="auth.afAuth.user | async; then showUserMenu else showLogin"></div>
 
 <!-- --------------------------- Show User Menu ---------------------------- -->
 <ng-template #showUserMenu>
@@ -22,9 +22,26 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img [src]="userAvatar" width="40" height="40" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Mon Profil</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li> <button class="btn btn-dark nav-item" (click)="auth.logout()">
+                  Se deconnecter</button></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- <ul class="navbar-nav ms-auto">
           <button class="btn btn-dark nav-item" (click)="auth.logout()">
             Se deconnecter</button>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

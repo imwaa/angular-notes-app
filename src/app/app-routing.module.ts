@@ -5,6 +5,7 @@ import { CreateNoteComponent } from './notes/create-note/create-note.component';
 import { SignInComponent } from './notes/sign-in/sign-in.component';
 
 import { AuthGuard } from './auth.guard';
+import { SignInGuardGuard } from './sign-in-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/notes', pathMatch: 'full' },
@@ -14,7 +15,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: CreateNoteComponent,
   },
-  { path: 'sign-in', component: SignInComponent },
+  {
+    path: 'sign-in',
+    component: SignInComponent,
+    canActivate: [SignInGuardGuard],
+  },
 ];
 
 @NgModule({
