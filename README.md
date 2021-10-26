@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
 
 ## Screen Captures
-![image](https://user-images.githubusercontent.com/69726409/137595871-0f4df528-dcaa-4578-bf6b-95dc1765fc12.png) ![image](https://user-images.githubusercontent.com/69726409/137595883-9a8b5601-a26b-4092-8593-174f38b21776.png)
+![image](https://user-images.githubusercontent.com/69726409/137595871-0f4df528-dcaa-4578-bf6b-95dc1765fc12.png)![image](https://user-images.githubusercontent.com/69726409/137595883-9a8b5601-a26b-4092-8593-174f38b21776.png)
 
 ![image](https://user-images.githubusercontent.com/69726409/137595834-44715364-2974-41e7-b659-b80d463124f3.png)
 
